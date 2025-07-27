@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./SignUp.css";
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [errors, setErrors] = useState({});
 
@@ -18,7 +18,9 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      alert("Sign up successful!");
+      setUser({ name: form.name, email: form.email });
+      setForm({ name: "", email: "", password: "" });
+      setErrors({});
     }
   };
 
